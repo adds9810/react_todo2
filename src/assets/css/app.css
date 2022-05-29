@@ -1,0 +1,5 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  .form-check-input:checked + .form-checked-content { opacity: .5;}
