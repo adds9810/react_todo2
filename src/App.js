@@ -8,10 +8,6 @@ function App() {
         return JSON.parse(window.localStorage.getItem('LISTS') || '[]');
     });
     const [checkAllVal, setCheckAll] = useState(false);
-    useEffect(() => {
-        window.localStorage.setItem('LISTS', JSON.stringify(lists));
-        chkAllAction();
-    }, [lists]);
     const handleAddList = list => {
         setLists([...lists, list]);
     };
@@ -43,7 +39,7 @@ function App() {
         let changeChkAll = false;
         const listLength = lists.length || 0;
         if (listLength > 0) {
-            for (let row = 0; row < listLength; row++) {
+            for (const row in lists) {
                 if (lists[row].complete !== true) {
                     changeChkAll = false;
                     break;
@@ -60,6 +56,10 @@ function App() {
         }
         setLists(changeArr);
     };
+    useEffect(() => {
+        window.localStorage.setItem('LISTS', JSON.stringify(lists));
+        chkAllAction();
+    }, [lists]);
     return (
         <div>
             <div className="container">
