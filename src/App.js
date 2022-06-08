@@ -17,8 +17,10 @@ function App() {
     const handleUpdate = (cate, rowIndex, value) => {
         if (cate === 'chk') {
             if (rowIndex === 'all') {
-                lists.map(list => {
-                    list.complete = value;
+                lists.forEach(list => {
+                    const temp = list;
+                    temp.complete = value;
+                    return temp;
                 });
             } else {
                 const editRowData = {
