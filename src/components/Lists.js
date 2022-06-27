@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import List from './List';
 
-function Lists(props) {
-    const { lists, checkAllVal, setLists, onUpdate, onRemove } = props;
+function Lists(children) {
+    const { lists, checkAllVal, setLists, onUpdate, onRemove } = children;
     const [chkAllBox, setChkAllBox] = useState(checkAllVal);
     useEffect(() => {
         setChkAllBox(checkAllVal);

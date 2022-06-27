@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-
+import PropTypes from 'prop-types';
 import Form from './components/Form';
 import Lists from './components/Lists';
 
@@ -17,7 +17,7 @@ function App() {
     const handleUpdate = (cate, rowIndex, value) => {
         if (cate === 'chk') {
             if (rowIndex === 'all') {
-                lists.forEach(list => {
+                lists.map(list => {
                     const temp = list;
                     temp.complete = value;
                     return temp;
@@ -41,13 +41,14 @@ function App() {
         let changeChkAll = false;
         const listLength = lists.length || 0;
         if (listLength > 0) {
-            for (const row in lists) {
+            // for (const row in lists) {
+            Object.key(lists).forEach(row => {
                 if (lists[row].complete !== true) {
                     changeChkAll = false;
-                    break;
+                } else {
+                    changeChkAll = true;
                 }
-                changeChkAll = true;
-            }
+            });
         }
         handleChange(changeChkAll);
     };
@@ -78,5 +79,7 @@ function App() {
         </div>
     );
 }
-
+App.propsTypes = {
+    children: PropTypes.node.isRequired,
+};
 export default App;

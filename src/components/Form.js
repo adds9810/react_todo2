@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function Form(props) {
+function Form(children) {
     const [formValues, setformValues] = useState({
         txt: '',
         complete: false,
@@ -15,7 +15,7 @@ function Form(props) {
         if (formValues.txt === '') {
             window.alert('할 일을 등록해주세요!');
         } else {
-            props.onAddList({
+            children.onAddList({
                 id: Date.now(),
                 ...formValues,
             });

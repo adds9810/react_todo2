@@ -1,5 +1,5 @@
-function List(props) {
-    const { id, txt, rowIndex, complete, onUpdate, onRemove } = props;
+function List(children) {
+    const { id, txt, rowIndex, complete, onUpdate, onRemove } = children;
     const editTodo = () => {
         onUpdate();
     };
@@ -35,5 +35,4 @@ function List(props) {
         </li>
     );
 }
-
 export default List;
